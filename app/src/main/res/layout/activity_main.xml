@@ -20,7 +20,7 @@
         android:textAlignment="textEnd">
 
         <TextView
-            android:id="@+id/displayTextView"
+            android:id="@+id/display_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:shadowColor="@color/teal_200"
@@ -41,7 +41,7 @@
 
             <Button
 
-                android:id="@+id/keyBackButton"
+                android:id="@+id/key_back_button"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -55,7 +55,7 @@
 
             <Button
 
-                android:id="@+id/keyClearButton"
+                android:id="@+id/key_clear_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -66,7 +66,7 @@
 
             <Button
 
-                android:id="@+id/keyPlusMinusBatton"
+                android:id="@+id/key_plus_minus_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -76,7 +76,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyOneButton"
+                android:id="@+id/key_one_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -86,7 +86,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyTwoButton"
+                android:id="@+id/key_two_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -96,7 +96,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyThreeButton"
+                android:id="@+id/key_three_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -106,7 +106,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyDivisionButton"
+                android:id="@+id/key_division_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -116,7 +116,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyFourButton"
+                android:id="@+id/key_four_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -126,7 +126,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyFiveButton"
+                android:id="@+id/key_five_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -136,7 +136,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keySixButton"
+                android:id="@+id/key_six_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -146,7 +146,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyMultiplayButton"
+                android:id="@+id/key_multiplay_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -156,7 +156,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keySevenButton"
+                android:id="@+id/key_seven_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -166,7 +166,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyEightButton"
+                android:id="@+id/key_eight_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -176,7 +176,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyNineButton"
+                android:id="@+id/key_nine_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -186,7 +186,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyMinusButton"
+                android:id="@+id/key_minus_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -196,7 +196,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyZeroButton"
+                android:id="@+id/key_zero_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -208,7 +208,7 @@
                 app:layout_gravity="fill" />
 
             <Button
-                android:id="@+id/keyPointButton"
+                android:id="@+id/key_point_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -218,7 +218,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/keyPlusButton"
+                android:id="@+id/key_plus_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -230,7 +230,7 @@
                 app:layout_rowSpan="2" />
 
             <Button
-                android:id="@+id/keyDoubleZeroButton"
+                android:id="@+id/key_double_zero_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -239,7 +239,7 @@
                 android:text="00" />
 
             <Button
-                android:id="@+id/keyEqualsButton"
+                android:id="@+id/key_equals_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
