@@ -20,9 +20,19 @@
         android:textAlignment="textEnd">
 
         <TextView
+            android:id="@+id/result_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:maxLines="4"
+            android:textSize="20sp" /><![CDATA[/>
+
+        ]]>
+
+        <TextView
             android:id="@+id/display_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="2"
             android:shadowColor="@color/teal_200"
             android:shadowDx="4"
             android:shadowDy="2"
@@ -31,7 +41,7 @@
             android:textAlignment="textEnd"
             android:textColor="@color/white"
             android:textIsSelectable="false"
-            android:textSize="60sp" />
+            android:textSize="40sp" />
 
         <androidx.gridlayout.widget.GridLayout
             android:layout_width="wrap_content"
@@ -40,7 +50,6 @@
             app:columnCount="4">
 
             <Button
-
                 android:id="@+id/key_back_button"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
@@ -54,7 +63,6 @@
                 app:layout_gravity="fill" />
 
             <Button
-
                 android:id="@+id/key_clear_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -65,7 +73,6 @@
                 android:textSize="16sp" />
 
             <Button
-
                 android:id="@+id/key_plus_minus_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -251,12 +258,7 @@
                 app:layout_columnSpan="2"
                 app:layout_gravity="fill" />
 
-
         </androidx.gridlayout.widget.GridLayout>
-
-
     </LinearLayout>
-
-
 </FrameLayout>
 
