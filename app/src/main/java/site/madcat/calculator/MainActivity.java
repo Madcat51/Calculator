@@ -4,12 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
-    private boolean clearDisplay = true;
-    private boolean lastPoint = false;
+    private float operand1 = 0;
+    private float operand2 = 0;
+    private float result = 0;
+    private char prevSign;//знак предыдущий
+    private boolean clearDisplay = true; //если true то следующее нажатие очищает экран
+    private boolean lastPoint = false;//признак присутствия в вводимом числе запятой
+    private boolean firstOperation = true;//признак первой операции
+    private TextView resultView;
     private TextView displayView;
     private Button keyOne;
     private Button keyTwo;
@@ -32,20 +39,19 @@ public class MainActivity extends AppCompatActivity {
     private Button keyEquals;
     private Button keyPoint;
     private String displayText;
+    private ScrollView scrollResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initViews(); //Инициализация переменных
         clickKey();  //Обработка нажатия на экран
-
-
     }
 
     /*Инициализация переменных*/
     public void initViews() {
+        resultView = (TextView) findViewById(R.id.result_text_view);
         displayView = (TextView) findViewById(R.id.display_text_view);
         keyOne = findViewById(R.id.key_one_button);
         keyTwo = findViewById(R.id.key_two_button);
@@ -67,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         keyMultiplay = findViewById(R.id.key_multiplay_button);
         keyEquals = findViewById(R.id.key_equals_button);
         keyPoint = findViewById(R.id.key_point_button);
+        scrollResult = findViewById(R.id.result_scroll_view);
     }
 
     /*Обработка нажатия на экран*/
@@ -85,12 +92,12 @@ public class MainActivity extends AppCompatActivity {
         keyPoint.setOnClickListener(view -> displayPoint("."));
         keyPlusMinus.setOnClickListener(view -> displaySign());
         keyBack.setOnClickListener(view -> backSymbol());
-//        keyClear.setOnClickListener(view -> );
-//        keyPlus.setOnClickListener(view -> );
-//        keyMinus.setOnClickListener(view -> );
-//        keyDivision.setOnClickListener(view -> );
-//        keyMultiplay.setOnClickListener(view -> );
-//        keyEquals.setOnClickListener(view -> );
+        keyClear.setOnClickListener(view -> clear());
+        keyPlus.setOnClickListener(view -> computation('+'));
+        keyMinus.setOnClickListener(view -> computation('-'));
+        keyDivision.setOnClickListener(view -> computation('/'));
+        keyMultiplay.setOnClickListener(view -> computation('*'));
+        keyEquals.setOnClickListener(view -> equalsClick());
     }
 
     /*Вывод цифры на экран*/
@@ -121,21 +128,91 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void clear() {
+        clearDisplay = true;
+        operand1 = 0;
+        operand2 = 0;
+        result = 0;
+        String prevSign = "";
+        lastPoint = false;
+        firstOperation = true;
+        clearDisplay = true;
+        displayView.setText("0");
+        resultView.setText("");
+    }
+
     /*Убрать последний знак*/
     public void backSymbol() {
-  //  char lastSymbol =displayText.charAt(displayText.length() - 1);
+        //  char lastSymbol =displayText.charAt(displayText.length() - 1);
         displayText = displayView.getText().toString();
-        if (displayText.length() >=1) {
+        if (displayText.length() >= 1) {
 
-            displayView.setText(displayText.substring(0,displayText.length() - 1));
-        } else  {
-      //      displayView.setText(0);//поправить не работает
+            displayView.setText(displayText.substring(0, displayText.length() - 1));
+        } else {
+            //      displayView.setText(0);//поправить не работает
         }
   /*      if (lastSymbol=='.'){     //если была точка то ее можно опять ставить
             lastPoint = false;
         }*/
-
     }
 
+    private float payment(char sign) {
+        switch (sign) {
+            case ('+'): {
+                return (operand1 + operand2);
+            }
+            case ('-'): {
+                return (operand1 - operand2);
+            }
+            case ('/'): {
+                return (operand1 / operand2);
+            }
+            case ('*'): {
+                return (operand1 * operand2);
+            }
+        }
+        return 0;
+    }
+
+    public void computation(char actionSign) {
+
+        if (firstOperation == true) {
+            if (prevSign == '=') {
+                resultView.setText(resultView.getText().toString() + "\n" + displayView.getText() + actionSign);
+            } else {
+                resultView.setText(resultView.getText().toString() + displayView.getText() + actionSign);
+            }
+
+            operand1 = Float.parseFloat(displayView.getText().toString());
+            clearDisplay = true;
+            firstOperation = false;
+        } else {
+            operand2 = Float.parseFloat(displayView.getText().toString());
+            result = payment(prevSign);
+            String paymentResult = Float.toString(result).replaceAll("\\.?0*$", "");
+
+            resultView.setText(resultView.getText().toString() + displayView.getText() + "=" + paymentResult + "\n" + paymentResult + actionSign);
+            scrollResult.scrollTo(0, scrollResult.getBottom());
+            operand1 = result;
+            clearDisplay = true;
+        }
+        prevSign = actionSign;
+    }
+
+    private void equalsClick() {
+        if (prevSign != '=') {
+            operand2 = Float.parseFloat(displayView.getText().toString());
+            result = payment(prevSign);
+            String paymentResult = Float.toString(result).replaceAll("\\.?0*$", "");
+            resultView.setText(resultView.getText().toString() + displayView.getText() + "=" + paymentResult);
+            clearDisplay = true;
+            prevSign = '=';
+            firstOperation = true;
+        }
+        scrollResult.scrollTo(0, scrollResult.getBottom());
+        firstOperation = true;
+        clearDisplay = true;
+        displayView.setText("0");
+    }
 
 }
