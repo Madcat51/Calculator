@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             lastPoint = true; //после удаления запятой не работает
         }
     }
-
+    /*Сброс*/
     public void clear() {
         clearDisplay = true;
         operand1 = 0;
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             lastPoint = false;
         }*/
     }
-
+/*математические операции*/
     private float payment(char sign) {
         switch (sign) {
             case ('+'): {
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
             case ('-'): {
                 return (operand1 - operand2);
             }
-            case ('/'): {
+            case ('/'): {                            // деление на 0 написать
                 return (operand1 / operand2);
             }
             case ('*'): {
@@ -173,16 +173,14 @@ public class MainActivity extends AppCompatActivity {
         }
         return 0;
     }
-
+    /*Кнопка действия*/
     public void computation(char actionSign) {
-
         if (firstOperation == true) {
             if (prevSign == '=') {
                 resultView.setText(resultView.getText().toString() + "\n" + displayView.getText() + actionSign);
             } else {
                 resultView.setText(resultView.getText().toString() + displayView.getText() + actionSign);
             }
-
             operand1 = Float.parseFloat(displayView.getText().toString());
             clearDisplay = true;
             firstOperation = false;
@@ -190,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
             operand2 = Float.parseFloat(displayView.getText().toString());
             result = payment(prevSign);
             String paymentResult = Float.toString(result).replaceAll("\\.?0*$", "");
-
             resultView.setText(resultView.getText().toString() + displayView.getText() + "=" + paymentResult + "\n" + paymentResult + actionSign);
             scrollResult.scrollTo(0, scrollResult.getBottom());
             operand1 = result;
@@ -198,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         }
         prevSign = actionSign;
     }
-
+/*Кнопка равно*/
     private void equalsClick() {
         if (prevSign != '=') {
             operand2 = Float.parseFloat(displayView.getText().toString());
