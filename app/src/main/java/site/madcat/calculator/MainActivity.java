@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private float operand1 = 0;
     private float operand2 = 0;
     private float result = 0;
-    private char prevSign;//знак предыдущий
+    private char prevSign;//знак  действия предыдущий
     private boolean clearDisplay = true; //если true то следующее нажатие очищает экран
     private boolean lastPoint = false;//признак присутствия в вводимом числе запятой
     private boolean firstOperation = true;//признак первой операции
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         keyEquals.setOnClickListener(view -> equalsClick());
     }
 
-    /*Вывод цифры на экран*/
+    /*Вывод цифры на экран в display_text_view)*/
     public void displayOnScreen(String symbol) {
         if (clearDisplay == true) {
             displayView.setText(symbol);
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*Изменение знака*/
+    /*Изменение знака +/- */
     public void displaySign() {
         displayText = displayView.getText().toString();
         if (displayText.charAt(0) == '-') {
@@ -120,14 +120,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /*Вывод запятой*/
+    /*Вывод запятой недописано*/
     public void displayPoint(String point) {
         if (lastPoint == false) {
             displayView.setText(displayView.getText() + ".");
-            lastPoint = true; //после удаления запятой не работает
+            lastPoint = true; //после удаления запятой кнопкой back не работает, поправлю
         }
     }
-    /*Сброс*/
+
+    /*Сброс здесь сбрасываем на начало*/
     public void clear() {
         clearDisplay = true;
         operand1 = 0;
@@ -141,21 +142,22 @@ public class MainActivity extends AppCompatActivity {
         resultView.setText("");
     }
 
-    /*Убрать последний знак*/
+    /*back-Убрать последний знак (не дописано)*/
     public void backSymbol() {
-        //  char lastSymbol =displayText.charAt(displayText.length() - 1);
         displayText = displayView.getText().toString();
-        if (displayText.length() >= 1) {
-
+        char lastSymbol = displayText.charAt(displayText.length() - 1);
+        if (displayText.length() > 1) {
             displayView.setText(displayText.substring(0, displayText.length() - 1));
         } else {
-            //      displayView.setText(0);//поправить не работает
+            displayView.setText("0");
+            clearDisplay = true;
         }
-  /*      if (lastSymbol=='.'){     //если была точка то ее можно опять ставить
+        if (lastSymbol == '.') {     //если была точка то ее можно опять ставить
             lastPoint = false;
-        }*/
+        }
     }
-/*математические операции*/
+
+    /*математические операции*/
     private float payment(char sign) {
         switch (sign) {
             case ('+'): {
@@ -164,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
             case ('-'): {
                 return (operand1 - operand2);
             }
-            case ('/'): {                            // деление на 0 написать
+            case ('/'): {                            // деление на 0 надо написать
                 return (operand1 / operand2);
             }
             case ('*'): {
@@ -173,20 +175,21 @@ public class MainActivity extends AppCompatActivity {
         }
         return 0;
     }
-    /*Кнопка действия*/
+
+    /*Кнопка действия */
     public void computation(char actionSign) {
-        if (firstOperation == true) {
+        if (firstOperation == true) {//расчет если стоит признак первой операции - либо только загрузили/сбросили, либо нажали "="
             if (prevSign == '=') {
-                resultView.setText(resultView.getText().toString() + "\n" + displayView.getText() + actionSign);
+                resultView.setText(resultView.getText().toString() + "\n" + displayView.getText() + actionSign);//для слуая когда предыдущая операция была "="
             } else {
-                resultView.setText(resultView.getText().toString() + displayView.getText() + actionSign);
+                resultView.setText(resultView.getText().toString() + displayView.getText() + actionSign); //для загрузили/сбросили
             }
             operand1 = Float.parseFloat(displayView.getText().toString());
             clearDisplay = true;
             firstOperation = false;
-        } else {
+        } else {//здесь выполняем расчет по нажатию кнопки с мат. операциями +-/*
             operand2 = Float.parseFloat(displayView.getText().toString());
-            result = payment(prevSign);
+            result = payment(prevSign);  //выполняем математические операции. вызываем метод и передаем туда предыдущее действие
             String paymentResult = Float.toString(result).replaceAll("\\.?0*$", "");
             resultView.setText(resultView.getText().toString() + displayView.getText() + "=" + paymentResult + "\n" + paymentResult + actionSign);
             scrollResult.scrollTo(0, scrollResult.getBottom());
@@ -195,11 +198,12 @@ public class MainActivity extends AppCompatActivity {
         }
         prevSign = actionSign;
     }
-/*Кнопка равно*/
+
+    /*Кнопка равно*/
     private void equalsClick() {
         if (prevSign != '=') {
             operand2 = Float.parseFloat(displayView.getText().toString());
-            result = payment(prevSign);
+            result = payment(prevSign);//выполняем математические операции. вызываем метод и передаем туда предыдущее действие
             String paymentResult = Float.toString(result).replaceAll("\\.?0*$", "");
             resultView.setText(resultView.getText().toString() + displayView.getText() + "=" + paymentResult);
             clearDisplay = true;
