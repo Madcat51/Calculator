@@ -44,9 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initViews(); //Инициализация переменных
-
         clickKey();  //Обработка нажатия на экран
     }
 
@@ -81,87 +79,88 @@ public class MainActivity extends AppCompatActivity {
     public void clickKey() {
         keyOne.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("1");
-            afterGetResult();
+            GetResults();
         });
         keyTwo.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("2");
-            afterGetResult();
+            GetResults();
         });
         keyThree.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("3");
-            afterGetResult();
+            GetResults();
         });
         keyFour.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("4");
-            afterGetResult();
+            GetResults();
         });
         keyFive.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("5");
-            afterGetResult();
+            GetResults();
         });
         keySix.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("6");
-            afterGetResult();
+            GetResults();
         });
         keySeven.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("7");
-            afterGetResult();
+            GetResults();
         });
         keyEight.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("8");
-            afterGetResult();
+            GetResults();
         });
         keyNine.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("9");
-            afterGetResult();
+            GetResults();
         });
         keyZero.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("0");
-            afterGetResult();
+            GetResults();
         });
         keyDoubleZero.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("00");
-            afterGetResult();
+            GetResults();
         });
         keyPoint.setOnClickListener(view -> {
             calculator.displayPoint(".");
-            afterGetResult();
+            GetResults();
         });
         keyPlusMinus.setOnClickListener(view -> {
             calculator.displaySign();
-            afterGetResult();
+            GetResults();
         });
         keyBack.setOnClickListener(view -> {
             calculator.backSymbol();
-            afterGetResult();
+            GetResults();
         });
         keyClear.setOnClickListener(view -> {
             calculator.clear();
-            afterGetResult();
+            GetResults();
         });
         keyPlus.setOnClickListener(view -> {
             calculator.computation('+');
-            afterGetResult();
+            GetResults();
         });
         keyMinus.setOnClickListener(view -> {
             calculator.computation('-');
-            afterGetResult();
+            GetResults();
         });
         keyDivision.setOnClickListener(view -> {
             calculator.computation('/');
-            afterGetResult();
+            GetResults();
         });
         keyMultiplay.setOnClickListener(view -> {
             calculator.computation('*');
-            afterGetResult();
+            GetResults();
         });
         keyEquals.setOnClickListener(view -> {
             calculator.equalsClick();
-            afterGetResult();
+            GetResults();
         });
+
     }
 
-    public void afterGetResult() {
+    public void GetResults() {
         displayView.setText(calculator.getDisplayText().toString());
         resultView.setText(calculator.getResultText().toString());
         scrollResult.scrollTo(0, scrollResult.getBottom());
