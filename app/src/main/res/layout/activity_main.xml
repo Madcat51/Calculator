@@ -66,22 +66,20 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_back_button"
-                    android:layout_margin="@dimen/margin_button"
-                    android:backgroundTint="@color/gray"
+                    style="@style/StyleKeyFunction"
                     android:text="@string/key_back"
                     app:layout_columnSpan="@integer/button_column_span"
                     app:layout_gravity="fill" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_clear_button"
-                    android:layout_margin="@dimen/margin_button"
-                    android:backgroundTint="@color/gray"
+                    style="@style/StyleKeyFunction"
                     android:text="@string/key_clear" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_plus_minus_button"
+                    style="@style/StyleKeyFunction"
                     android:layout_margin="@dimen/margin_button"
-                    android:backgroundTint="@color/gray"
                     android:text="@string/key_plus_minus" />
 
                 <com.google.android.material.button.MaterialButton
@@ -101,8 +99,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_division_button"
-                    android:layout_margin="@dimen/margin_button"
-                    android:backgroundTint="@color/gray"
+                    style="@style/StyleKeyFunction"
                     android:text="@string/key_division" />
 
                 <com.google.android.material.button.MaterialButton
@@ -122,8 +119,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_multiplay_button"
-                    android:layout_margin="@dimen/margin_button"
-                    android:backgroundTint="@color/gray"
+                    style="@style/StyleKeyFunction"
                     android:text="@string/key_multiplay" />
 
                 <com.google.android.material.button.MaterialButton
@@ -143,42 +139,39 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_minus_button"
-                    android:backgroundTint="@color/gray"
+                    style="@style/StyleKeyFunction"
                     android:text="@string/key_minus" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_zero_button"
+                    style="@style/StyleKeyNumber"
                     android:layout_margin="@dimen/margin_button"
-                    android:backgroundTint="@color/gray"
                     android:text="@string/key_zero"
                     app:layout_columnSpan="@integer/button_column_span"
                     app:layout_gravity="fill" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_double_zero_button"
+                    style="@style/StyleKeyNumber"
                     android:layout_margin="@dimen/margin_button"
-                    android:backgroundTint="@color/gray"
                     android:text="@string/key_double_zero" />
 
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_plus_button"
-                    android:layout_margin="@dimen/margin_button"
-                    android:backgroundTint="@color/gray"
+                    style="@style/StyleKeyFunction"
                     android:text="@string/key_plus"
                     app:layout_gravity="fill"
                     app:layout_rowSpan="@integer/button_row_span" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_point_button"
-                    android:layout_margin="@dimen/margin_button"
-                    android:backgroundTint="@color/gray"
+                    style="@style/StyleKeyFunction"
                     android:text="@string/key_point" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/key_equals_button"
-                    android:layout_margin="@dimen/margin_button"
-                    android:backgroundTint="@color/gray"
+                    style="@style/StyleKeyFunction"
                     android:text="@string/key_equals"
                     app:layout_columnSpan="@integer/button_column_span"
                     app:layout_gravity="fill" />

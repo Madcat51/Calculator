@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="textview_text_size_textview">40sp</dimen>
-    <dimen name="resultview_text_size_textview">40sp</dimen>
+    <dimen name="resultview_text_size_textview">20sp</dimen>
     <dimen name="text_size_button">16sp</dimen>
     <dimen name="margin_button">5dp</dimen>
     <dimen name="linear_layout_width">393dp</dimen>
