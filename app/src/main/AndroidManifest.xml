@@ -5,10 +5,11 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-
+        android:label="Калькулятор"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Calculator">
+        android:theme="@style/Theme.Calculator"
+    >
 
         <activity
 

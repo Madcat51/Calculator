@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="StyleKeyNumber" parent="@style/Theme.Calculator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_button</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textSize">@dimen/text_size_button</item>
+        <item name="android:backgroundTint">@color/dark_gray</item>
+    </style>
+
+    <style name="StyleKeyNumberLand" parent="@style/StyleKeyNumber">
+        <item name="android:backgroundTint">@color/dark_gray</item>
+    </style>
+
+    <style name="StyleKeyFunction" parent="@style/Theme.Calculator">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/margin_button</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textSize">@dimen/text_size_button</item>
+        <item name="android:backgroundTint">@color/dark_gray</item>
+    </style>
+
+    <style name="StyleKeyFunctionLand" parent="@style/StyleKeyFunction">
+        <item name="android:backgroundTint">@color/gray</item>
+    </style>
+</resources>
