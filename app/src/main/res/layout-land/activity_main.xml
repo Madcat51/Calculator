@@ -23,7 +23,11 @@
             android:layout_width="@dimen/linear_layout_width_land"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/key_setting_button"
+                style="@style/StyleKeyFunction"
+                android:text="@string/key_settings"
+                />
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/frame_layout_height_land">

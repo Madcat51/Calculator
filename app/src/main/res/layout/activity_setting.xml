@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp">
+
+    <Switch
+        android:id="@+id/themes_dark_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/switch_dark_themes" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/key_apply_setting_button"
+        style="@style/StyleKeyFunction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/key_setting_apply" />
+
+</LinearLayout>

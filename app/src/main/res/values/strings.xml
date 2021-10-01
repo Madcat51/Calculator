@@ -20,6 +20,7 @@
     <string name="key_plus_minus">+/-</string>
     <string name="key_clear">C</string>
     <string name="key_back">Back</string>
-
-
+    <string name="switch_dark_themes">Темная</string>
+    <string name="key_settings">Настойки</string>
+    <string name="key_setting_apply">Применить</string>
 </resources>

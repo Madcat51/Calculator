@@ -26,4 +26,8 @@
     <style name="StyleKeyFunctionLand" parent="@style/StyleKeyFunction">
         <item name="android:backgroundTint">@color/gray</item>
     </style>
+
+
+
+
 </resources>
