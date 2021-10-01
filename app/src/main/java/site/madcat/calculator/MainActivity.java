@@ -1,18 +1,30 @@
 package site.madcat.calculator;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TEXT_VIEW = "0";
+    private static final String TEXT_RESULT = "";
+    private static final Boolean STATE_DARK_THEMES = false;
+    private static final int REQUESTCODE = 1;
+    boolean darkthemescheck;
     private Calculator calculator = new Calculator(); // создание объекта;
     private TextView resultView;
     private TextView displayView;
+    private Button keySettings;
     private Button keyOne;
     private Button keyTwo;
     private Button keyThree;
@@ -38,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean clearDisplay = true; //если true то следующее нажатие очищает экран
     private String displayText;
     private boolean firstOperation = true;//признак первой операции
-
+    private Intent intent;
+    private ActivityResultLauncher<Intent> sett;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +59,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initViews(); //Инициализация переменных
         clickKey();  //Обработка нажатия на экран
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString(TEXT_VIEW, displayView.getText().toString());
+        outState.putString(TEXT_RESULT, resultView.getText().toString());
+        outState.putBoolean(String.valueOf(STATE_DARK_THEMES), darkthemescheck);
+        super.onSaveInstanceState(outState);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        displayView.setText(savedInstanceState.getString(TEXT_VIEW));
+        resultView.setText(savedInstanceState.getString(TEXT_RESULT));
+        darkthemescheck = savedInstanceState.getBoolean(String.valueOf(STATE_DARK_THEMES));
+
     }
 
     /*Инициализация переменных*/
@@ -73,10 +105,20 @@ public class MainActivity extends AppCompatActivity {
         keyEquals = findViewById(R.id.key_equals_button);
         keyPoint = findViewById(R.id.key_point_button);
         scrollResult = findViewById(R.id.result_scroll_view);
+        keySettings = findViewById(R.id.key_setting_button);
+    }
+
+    public void selectThemes() {
+        Intent intent = new Intent(this, SettingActivity.class);
+        intent.putExtra(SettingActivity.POSITION_SWITCH, darkthemescheck);
+        startActivityForResult(intent, 1);
     }
 
     /*Обработка нажатия на экран*/
     public void clickKey() {
+        keySettings.setOnClickListener(view -> {
+            selectThemes();
+        });
         keyOne.setOnClickListener(view -> {
             calculator.addSymbolToDisplayText("1");
             GetResults();
@@ -157,7 +199,6 @@ public class MainActivity extends AppCompatActivity {
             calculator.equalsClick();
             GetResults();
         });
-
     }
 
     public void GetResults() {
@@ -166,4 +207,23 @@ public class MainActivity extends AppCompatActivity {
         scrollResult.scrollTo(0, scrollResult.getBottom());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == -1 && requestCode == REQUESTCODE) {
+            darkthemescheck = data.getBooleanExtra("dark", true);
+            setThemes();
+        }
+    }
+
+    public void setThemes() {
+        if (darkthemescheck == true) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            recreate();
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            recreate();
+        }
+    }
 }
+

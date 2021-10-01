@@ -121,8 +121,9 @@ public class Calculator {
             case ('-'): {
                 return (operand1 - operand2);
             }
-            case ('/'): {                            // деление на 0 надо написать
+            case ('/'): {
                 return (operand1 / operand2);
+
             }
             case ('*'): {
                 return (operand1 * operand2);
